@@ -1,0 +1,72 @@
+class Account {
+
+    String name;
+    int accountNumber;
+
+    Account(String name, int accountNumber) {
+        this.name = name;
+        this.accountNumber = accountNumber;
+    }
+
+    void displayDetails() {
+        System.out.println("Name           : " + name);
+        System.out.println("Account Number : " + accountNumber);
+    }
+}
+
+// Child class
+class SavingsAccount extends Account {
+
+    SavingsAccount(String name, int accountNumber) {
+        super(name, accountNumber);
+    }
+
+    void savings() {
+        System.out.println("Account Type   : Savings Account");
+    }
+}
+
+// Child class
+class CurrentAccount extends Account {
+
+    CurrentAccount(String name, int accountNumber) {
+        super(name, accountNumber);
+    }
+
+    void current() {
+        System.out.println("Account Type   : Current Account");
+    }
+}
+
+// Multilevel inheritance
+class PremiumSavingsAccount extends SavingsAccount {
+
+    PremiumSavingsAccount(String name, int accountNumber) {
+        super(name, accountNumber);
+    }
+
+    void premium() {
+        System.out.println("Account Type   : Premium Savings Account");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        SavingsAccount s = new SavingsAccount("Shreeja", 101);
+        CurrentAccount c = new CurrentAccount("mithra", 102);
+        PremiumSavingsAccount p = new PremiumSavingsAccount("Priya", 103);
+
+        System.out.println("--- Savings Account ---");
+        s.displayDetails();
+        s.savings();
+
+        System.out.println("\n--- Current Account ---");
+        c.displayDetails();
+        c.current();
+
+        System.out.println("\n--- Premium Savings Account ---");
+        p.displayDetails();
+        p.premium();
+    }
+}
