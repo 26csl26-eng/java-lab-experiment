@@ -1,0 +1,68 @@
+abstract class Employee {
+
+    static String company = "SSS Company";
+
+    public int employeeId;
+    public String name;
+    public String department;
+    private double salary;
+    protected String designation;
+    String location;
+
+    Employee(int employeeId, String name, String department,
+             double salary, String designation, String location) {
+
+        this.employeeId = employeeId;
+        this.name = name;
+        this.department = department;
+        this.salary = salary;
+        this.designation = designation;
+        this.location = location;
+    }
+
+    // Getter
+    double getSalary() {
+        return salary;
+    }
+
+    // Setter
+    void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    // Abstract method
+    abstract void displayRole();
+}
+
+class Developer extends Employee {
+
+    Developer(int employeeId, String name, String department,
+              double salary, String designation, String location) {
+
+        super(employeeId, name, department, salary, designation, location);
+    }
+
+    void displayRole() {
+        System.out.println("Role       : Developer");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Developer d = new Developer(
+            101, "Shreeja", "IT", 30000,
+            "Software Developer", "Coimbatore"
+        );
+
+        System.out.println("Company    : " + Employee.company);
+        System.out.println("Employee ID: " + d.employeeId);
+        System.out.println("Name       : " + d.name);
+        System.out.println("Department : " + d.department);
+        System.out.println("Salary     : " + d.getSalary());
+        System.out.println("Designation: " + d.designation);
+        System.out.println("Location   : " + d.location);
+
+        d.displayRole();
+    }
+}
