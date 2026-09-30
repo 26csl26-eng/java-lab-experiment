@@ -1,0 +1,43 @@
+interface RemoteControl {
+
+    void turnOn();
+    void turnOff();
+}
+
+abstract class Appliance {
+
+    abstract void displayAppliance();
+}
+
+class SmartTV extends Appliance implements RemoteControl {
+
+    String name = "Smart TV";
+
+    void displayAppliance() {
+        System.out.println("Appliance : " + name);
+    }
+
+    public void turnOn() {
+        System.out.println("Status    : TV is ON");
+    }
+
+    public void turnOff() {
+        System.out.println("Status    : TV is OFF");
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        // Dynamic Method Dispatch
+        Appliance a = new SmartTV();
+
+        a.displayAppliance();
+
+        // Calling interface methods
+        SmartTV tv = new SmartTV();
+        tv.turnOn();
+        tv.turnOff();
+    }
+}
