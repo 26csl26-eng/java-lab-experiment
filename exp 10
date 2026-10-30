@@ -1,0 +1,38 @@
+
+class Shared {
+    synchronized void printNumbers() {
+        for (int i = 1; i <= 5; i++) {
+            System.out.println(Thread.currentThread().getName() + ": " + i);
+            try {
+                Thread.sleep(500);
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+    }
+}
+
+class MyThread extends Thread {
+    Shared s;
+
+    MyThread(Shared s, String name) {
+        super(name);
+        this.s = s;
+    }
+
+    public void run() {
+        s.printNumbers();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Shared s = new Shared();
+
+        MyThread t1 = new MyThread(s, "Thread 1");
+        MyThread t2 = new MyThread(s, "Thread 2");
+
+        t1.start();
+        t2.start();
+    }
+}
