@@ -1,0 +1,42 @@
+
+import java.util.*;
+
+class Student implements Comparable<Student> {
+    int id;
+    String name;
+    int mark;
+
+    Student(int id, String name, int mark) {
+        this.id = id;
+        this.name = name;
+        this.mark = mark;
+    }
+
+    public int compareTo(Student s) {
+        return this.id - s.id;
+    }
+
+    public String toString() {
+        return id + " " + name + " " + mark;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        List<Student> list = new ArrayList<>();
+
+        list.add(new Student(3, "Arun", 80));
+        list.add(new Student(1, "Bala", 90));
+        list.add(new Student(2, "Devi", 85));
+
+        Collections.sort(list);
+        System.out.println("Sorting by ID:");
+        for (Student s : list)
+            System.out.println(s);
+
+        list.sort((a, b) -> a.mark - b.mark);
+        System.out.println("Sorting by Mark:");
+        for (Student s : list)
+            System.out.println(s);
+    }
+}
