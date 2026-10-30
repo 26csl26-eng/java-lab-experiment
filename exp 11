@@ -1,0 +1,42 @@
+
+class MyThread extends Thread {
+    public void run() {
+        System.out.println("Thread is Running");
+
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        System.out.println("Thread Completed");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyThread t1 = new MyThread();
+
+        System.out.println("State: " + t1.getState());
+
+        t1.start();
+
+        System.out.println("State: " + t1.getState());
+
+        try {
+            t1.join();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        System.out.println("State: " + t1.getState());
+
+        System.out.println("Deadlock Prevention:");
+
+        synchronized (Main.class) {
+            System.out.println("Lock acquired safely");
+        }
+
+        System.out.println("Program Completed");
+    }
+}
